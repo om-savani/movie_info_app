@@ -1,16 +1,7 @@
 # movie_info_app
 
-A new Flutter project.
+### in this app i do searchbar option that can search any movie and take input from user and show details of movie
 
-## Getting Started
+## screenshot
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="https://github.com/user-attachments/assets/0a9b6fe5-5b29-4afe-a896-5c4cb2e56ef9" width="200" height="450">
