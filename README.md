@@ -1,16 +1,26 @@
-# movie_info_app
+# Movie Info App
 
-A new Flutter project.
+Discover movie details with ease using the Movie Info App. This application allows users to search for movies and view detailed information, including release dates and images, in a clean and user-friendly interface.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- **Search Movies**: Quickly search for movies by their titles.
+- **Detailed Information**: View movie details such as title, release date, and poster image.
+- **Smooth Navigation**: Effortlessly navigate between the search and detail pages.
 
-A few resources to get you started if this is your first Flutter project:
+## Packages Used
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+The app utilizes the following Dart packages:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- `cupertino_icons: ^1.0.8`: Provides iOS-style icons.
+- `shared_preferences: ^2.3.3`: For storing user preferences locally.
+- `provider: ^6.1.2`: State management for efficient data handling.
+- `http: ^1.2.2`: To make API calls for fetching movie data.
+
+## Screenshots
+
+### Home Screen
+<img src="https://github.com/user-attachments/assets/f8dfec71-7b27-48c6-8015-916e13cb133b" width="200" height="450">
+
+<img src="https://github.com/user-attachments/assets/11722222-4259-4196-af0b-1e027bd91d84" width="200" height="450">
+
