@@ -4,24 +4,17 @@ import 'package:movie_info_app/model/imdb_model.dart';
 
 class DataProvider with ChangeNotifier {
   final ApiHelper helper = ApiHelper();
-  List<TitleModel> title = [];
+  List<Edges> edge = [];
   List data = [];
-  TitleModel? titleModel;
-  String name = 'Titanic';
+  MovieModel? titleModel = MovieModel();
 
-  Future<void> loadData() async {
+  Future<void> loadData(String? name) async {
     try {
-      titleModel = await helper.getWeatherData(name);
+      titleModel = await helper.getApiData(name);
+      edge = titleModel?.dataMainSearch?.mainModels?.edge ?? [];
     } catch (e) {
       print("=============Error fetching data: $e");
-      title = [];
     }
     notifyListeners();
-  }
-
-  void changeName(String value) {
-    name = value;
-    notifyListeners();
-    loadData();
   }
 }

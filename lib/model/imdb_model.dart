@@ -1,90 +1,112 @@
-class TitleModel {
-  String? id;
-  String? title;
-  int? releaseYear;
-  ReleaseDate? releaseDate;
-  String? titleType;
-  ImageData? primaryImage;
-  // List<PrincipalCredit>? principalCredits;
+import 'dart:developer';
 
-  TitleModel({
-    this.id,
-    this.title,
-    this.releaseYear,
-    this.releaseDate,
-    this.titleType,
-    this.primaryImage,
-    // this.principalCredits,
-  });
+class MovieModel {
+  MainModel? dataMainSearch;
 
-  factory TitleModel.fromJson(Map json) {
-    return TitleModel(
-      id: json['id'] ?? '',
-      title: json['titleText']?['text'] ?? '',
-      releaseYear: json['releaseYear']?['year'] ?? 0,
-      releaseDate: ReleaseDate.fromJson(json['releaseDate'] ?? {}),
-      titleType: json['titleType']?['text'] ?? '',
-      primaryImage: ImageData.fromJson(json['primaryImage'] ?? {}),
-      // principalCredits: ,
+  MovieModel({this.dataMainSearch});
+
+  factory MovieModel.mapToModel(Map m1) {
+    return MovieModel(dataMainSearch: MainModel.mapToModel(m1['data']));
+  }
+}
+
+class MainModel {
+  MainSearchModel? mainModels;
+  MainModel({this.mainModels});
+
+  factory MainModel.mapToModel(Map m5) {
+    return MainModel(
+      mainModels: MainSearchModel.mapToModel(m5['mainSearch']),
     );
   }
 }
 
-class ReleaseDate {
-  int? month;
-  int? day;
-  int? year;
+class MainSearchModel {
+  List<Edges>? edge = [];
 
-  ReleaseDate({
-    this.month,
-    this.day,
-    this.year,
-  });
+  MainSearchModel({this.edge});
 
-  factory ReleaseDate.fromJson(Map json) {
-    return ReleaseDate(
-      month: json['month'] ?? 0,
-      day: json['day'] ?? 0,
-      year: json['year'] ?? 0,
+  factory MainSearchModel.mapToModel(Map m4) {
+    List<dynamic> e1 = m4['edges'];
+    return MainSearchModel(
+        edge: e1
+            .map(
+              (e) => Edges.mapToModel(e as Map),
+            )
+            .toList());
+  }
+}
+
+class Edges {
+  Node? nodes;
+  Edges({this.nodes});
+  factory Edges.mapToModel(Map m3) {
+    return Edges(nodes: Node.mapToModel(m3['node']));
+  }
+}
+
+class Node {
+  Enitity? entityModel;
+
+  Node({this.entityModel});
+
+  factory Node.mapToModel(Map m2) {
+    return Node(
+      entityModel: Enitity.mapToModel(
+        m2['entity'],
+      ),
     );
   }
 }
 
-class ImageData {
-  String? id;
-  String? url;
-  int? height;
-  int? width;
+class Enitity {
+  String? typeName;
+  TitleText? titleTextModel;
+  ReleaseDateModel? releaseDay;
+  ImageModel? imgModels;
 
-  ImageData({
-    this.id,
-    this.url,
-    this.height,
-    this.width,
-  });
+  Enitity(
+      {this.typeName, this.titleTextModel, this.releaseDay, this.imgModels});
 
-  factory ImageData.fromJson(Map json) {
-    return ImageData(
-      id: json['id'] ?? '',
-      url: json['url'] ?? '',
-      height: json['height'] ?? 0,
-      width: json['width'] ?? 0,
+  factory Enitity.mapToModel(Map m1) {
+    return Enitity(
+      typeName: m1['__typename'],
+      titleTextModel: TitleText.mapToModel(m1['titleText']),
+      releaseDay: ReleaseDateModel.mapToModel(m1['releaseDate']),
+      imgModels: ImageModel.mapToModel(m1['primaryImage']),
     );
   }
 }
 
-// class PrincipalCredit {
-//    List<Credits>? credits = [];
-//
-//   PrincipalCredit({
-//     this.credits
-//   });
-//
-//   factory PrincipalCredit.fromJson(Map json) {
-//     return credits;
-//   }
-// }
-//
-// class Credits{
-//
-// }
+class TitleText {
+  String? text;
+
+  TitleText({this.text});
+
+  factory TitleText.mapToModel(Map m6) {
+    return TitleText(
+      text: m6['text'],
+    );
+  }
+}
+
+class ReleaseDateModel {
+  int? date, month, year;
+
+  ReleaseDateModel({this.date, this.month, this.year});
+
+  factory ReleaseDateModel.mapToModel(Map m7) {
+    return ReleaseDateModel(
+        year: m7['year'], month: m7['month'], date: m7['day']);
+  }
+}
+
+class ImageModel {
+  String? imgUrl;
+
+  ImageModel({this.imgUrl});
+
+  factory ImageModel.mapToModel(Map m8) {
+    return ImageModel(imgUrl: m8['url']);
+  }
+}

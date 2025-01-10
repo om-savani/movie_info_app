@@ -17,13 +17,20 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(value: DataProvider()),
       ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {
-          '/': (context) => const HomePage(),
-          'detail_page': (context) => const DetailPage(),
+      child: Consumer<DataProvider>(
+        builder: (BuildContext context, value, Widget? child) {
+          // value.loadData('titanic');
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            darkTheme: ThemeData.dark(),
+            themeMode: ThemeMode.dark,
+            routes: {
+              '/': (context) => const HomePage(),
+              'detail_page': (context) => const DetailPage(),
+            },
+            initialRoute: '/',
+          );
         },
-        initialRoute: '/',
       ),
     );
   }
